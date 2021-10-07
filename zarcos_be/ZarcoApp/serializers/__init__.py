@@ -1,0 +1,5 @@
+from .serializersCategorias import CategoriaSerializer
+from .serializersEvento import EventoSerializer
+from .serializersInscripcion import InscripcionSerializer
+from .serializersLugar import LugarSerializer
+from .serializersPersona import PersonaSerializer
