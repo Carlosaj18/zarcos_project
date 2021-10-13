@@ -1,8 +1,0 @@
-# pip freeze
-Django 
-djangorestframework
-djangorestframework-simplejwt
-psycopg2-binary
-numpy
-
-# pip install -r requirenebts.txt
