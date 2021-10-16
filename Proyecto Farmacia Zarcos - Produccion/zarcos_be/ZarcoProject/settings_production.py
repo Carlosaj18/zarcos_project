@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jq4cu&=i55ahb1b8l2fcslt!lp00eqrit8*z9gr&^n+3s+8l(_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -109,10 +109,10 @@ WSGI_APPLICATION = 'ZarcoProject.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd6jjthbe8itc2i',
-    'USER': 'zocslonlwljeyk',
-    'PASSWORD': 'ed4116ab091f600320337c732fc92441fdffb07f1392c38ebe50daf4b1f47a3f',
-    'HOST': 'ec2-34-233-105-94.compute-1.amazonaws.com',
+    'NAME': 'cordinadorzarcos', # Localhost
+    'USER': 'postgres',
+    'PASSWORD': 'Andesynene13',
+    'HOST': 'localhost',
     'PORT': '5432',
     }
 }
@@ -161,5 +161,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+

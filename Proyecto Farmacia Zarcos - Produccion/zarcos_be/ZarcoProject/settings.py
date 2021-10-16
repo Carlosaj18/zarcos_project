@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -24,10 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jq4cu&=i55ahb1b8l2fcslt!lp00eqrit8*z9gr&^n+3s+8l(_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -111,10 +111,10 @@ WSGI_APPLICATION = 'ZarcoProject.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'cordinadorzarcos', # Localhost
-    'USER': 'postgres',
-    'PASSWORD': 'Andesynene13',
-    'HOST': 'localhost',
+    'NAME': 'd4ucvle2ea6bbi',
+    'USER': 'jkghiemtnbjsvp',
+    'PASSWORD': 'f927de730c623781851b2e65099d9c6042dcda56a6ce49d19fe3974d12834036',
+    'HOST': 'ec2-3-226-165-74.compute-1.amazonaws.com',
     'PORT': '5432',
     }
 }
@@ -142,9 +142,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -156,9 +156,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' # Para almacenar elementos staticos
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import django_heroku
+django_heroku.settings(locals())

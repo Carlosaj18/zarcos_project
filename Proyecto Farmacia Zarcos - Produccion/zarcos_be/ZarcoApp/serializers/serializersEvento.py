@@ -6,22 +6,12 @@ from ZarcoApp.models.categoria import Categoria
 from ZarcoApp.models.tipoEve import TipoEve
 
 class EventoSerializer(serializers.ModelSerializer):
-
-    """categoria_FK = CategoriaSerializer()
-    tipo_FK = TipoeventoSerializer()
-    lugar_FK = LugarSerializer()
-    inscripcion_FK = InscripcionSerializer()"""
-
     class Meta:
         model = Evento
         fields = ['id', 'nombre_evento', 'categoria_FK', 'tipoEvento_FK', 'fecha', 'hora', 'duracion', 'lugar_FK', 'precio', 'descripcion_simple', 
                 'descripcion_completa', 'imagen', 'thumbnail', 'cupo_maximo', 'is_active']
         
-        verbose_name = 'Evento'
-        verbose_name_plural = 'Eventos'
-        ordering = ['nombre_evento', 'fecha'] # ordena alfabeticamente
-
-    """def create(self, validated_data): -> REVISAR
+    def create(self, validated_data):
 
         lugarData = validated_data.pop('lugar_FK')
         categoriaData = validated_data.pop('categoria_FK')
@@ -31,8 +21,8 @@ class EventoSerializer(serializers.ModelSerializer):
         Categoria.objects.create(eventoInstance=eventoInstance, **categoriaData)
         TipoEve.objects.create(eventoInstance=eventoInstance, **tipoEventoData)
         
-        return eventoInstance"""
-    
+        return eventoInstance
+
     def to_representacion(self, obj): # de objeto a json
         
         categoria_FK = Categoria.objects.get(id=obj.categoria_FK)

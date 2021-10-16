@@ -66,10 +66,12 @@ VII. SERIALIZADORES
     2. Un Serializer es un tipo de controlador cuya función es transformar información de un formato X a un formato Y y viceversa. el componente le brinda persistencia a la información usando una serie de modelos (que en el fondo son objetos instanciados), y por otra parte, el usuario se comunica con el componente a través de las vistas usando un formato como JSON o XML.
     3. Una de las herramientas más útiles es la creación de un Serializer a partir de un Modelo, esto ahorra gran parte del trabajo ya que con solo indicarle unos pocos parámetros Django REST se encarga del trabajo difícil
     4. Dado que Django REST permite crear Serializers a partir de modelos, en muchas ocasiones se puede presentar que dichos modelos tengan relaciones entre sí
-    5. Se crea 
+    5. https://www.youtube.com/watch?v=B38aDwUpcFc
 
 
 XIII. VIEWS 
+
+    1. https://www.youtube.com/watch?v=B38aDwUpcFc 
 
 IX. URL
 
@@ -90,7 +92,9 @@ XII. Despliegue en Heroku entorno
     5. git add .
     6. git commit -m "Mensaje"
     7. git checkout master
-    7. git push heroku master
+    8. heroku config:set DISABLE_COLLECTSTATIC=1
+    9. git push heroku master
+    10. heroku config:set DJANGO_ALLOWED_HOSTS=https://zarcos-web-be.herokuapp.com/
 
 XIII. FRONTEND
 

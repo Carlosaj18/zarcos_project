@@ -11,4 +11,20 @@ class LugarSerializer(serializers.ModelSerializer):
         ordering = ['nombre_lugar'] # ordena alfabeticamente
 
 
+    """ If we want to be able to return complete object instances based on the 
+        validated data we need to implement one or both of the .create() and 
+        .update() methods.  """
+
+    def create(self, validated_data):
+        return Lugar.objects.create(**validated_data)
+    
+    def to_representacion(self, obj):
+            lugar = Lugar.objects.get(id=obj.id)
+            return {
+                "id" : lugar.id, 
+                "ciudad" : lugar.nombre_categoria,
+                "direccion" : lugar.direccion,
+                "nombre_lugar" : lugar.nombre_lugar,
+                "complemento" : lugar.complemento
+            }
     

@@ -1,14 +1,3 @@
-# pip freeze
-Django 
-djangorestframework
-djangorestframework-simplejwt
-psycopg2-binary
-numpy
-
-# pip install -r requirenebts.txt
-# pip show djangorestframework
-# pip install djangorestframework
-
 django==3.2.7
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.8.0

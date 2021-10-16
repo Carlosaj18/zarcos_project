@@ -19,6 +19,17 @@ class Evento(models.Model):
     thumbnail            = models.ImageField(height_field=None, width_field=None)
     cupo_maximo          = models.IntegerField(default=50) # It uses MinValueValidator and MaxValueValidator to validate the input based on the values that the default database supports.
     is_active            = models.BooleanField(default=True)
-
+    
+    class Meta: 
+        verbose_name = 'Evento'
+        verbose_name_plural = 'Eventos'
+        ordering = ['nombre_evento', 'fecha'] # ordena alfabeticamente
+    
+    REQUIRED_FIELDS = {
+        'categoria_FK',
+        'tipoEvento_FK',
+        'lugar_FK'
+    }
+    
     def __str__(self): # nos permite visualizar por el nombre
         return self.nombre_evento

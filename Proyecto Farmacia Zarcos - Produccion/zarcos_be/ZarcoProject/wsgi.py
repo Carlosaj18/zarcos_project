@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ZarcoProject.settings_production') # ZarcoProject.settings_production or ZarcoProject.settings
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ZarcoProject.settings') # ZarcoProject.settings_production or ZarcoProject.settings
 
 application = get_wsgi_application()

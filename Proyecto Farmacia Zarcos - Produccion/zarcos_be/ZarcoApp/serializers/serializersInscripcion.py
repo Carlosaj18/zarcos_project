@@ -9,40 +9,29 @@ class InscripcionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Inscripcion
         fields = ['id', 'persona_FK', 'evento_FK','numero_entradas', 'pago_total', 'fecha_registro']
-        verbose_name = 'Inscripcion'
-        verbose_name_plural = 'Inscripciones'
-        ordering = ['fecha_registro'] # ordena alfabeticamente
-
-    """def create(self, validated_data): -> REVISAR
-        personaData = validated_data.pop('persona')
-        eventoData = validated_data.pop('evento')
+        
+    def create(self, validated_data): 
+        personaData = validated_data.pop('persona_FK')
+        eventoData = validated_data.pop('evento_FK')
         inscripcionInstance = Inscripcion.objects.create(**validated_data)
         User.objects.create(inscripcion=inscripcionInstance, **personaData)
         Evento.objects.create(inscripcion=inscripcionInstance, **eventoData)
-        return inscripcionInstance"""
+        return inscripcionInstance
 
     def to_representacion(self, obj): # de objeto a json
+        
         evento_FK = Evento.objects.get(id=obj.evento_FK)
         persona_FK = User.objects.get(id=obj.persona_FK)
         inscripcion = Inscripcion.objects.get(id=obj.id)
 
+        """inscripcion = Inscripcion.objects.get(id=obj.id)
+        evento_FK = Evento.objects.get(inscripcion=obj.id)
+        persona_FK = User.objects.get(inscripcion=obj.id)"""
+        
+        
         return {
             "id" : inscripcion.id,
-            "evento_FK" : {
-                "id" : evento_FK.id, #
-                "nombre_evento" : evento_FK.nombreEvento,
-                "fecha" : evento_FK.fecha,
-                "hora" : evento_FK.hora,
-                "duracion" : evento_FK.duracion,
-                "precio" : evento_FK.precio,
-                "descripcionSimple" : evento_FK.descripcionSimple,
-                "descripcionCompleta" : evento_FK.descripcionCompleta,
-                "imagen" : evento_FK.imagen,
-                "thumbnail" : evento_FK.thumbnail,
-                "cupo_maximo" : evento_FK.cupo_maximo,
-                "is_active" : evento_FK.is_active,
-            }, 
-            "persona" : {
+            "persona_FK" : {
                 "id" : persona_FK.id,
                 "username" : persona_FK.username,
                 "email" : persona_FK.email,
@@ -55,7 +44,20 @@ class InscripcionSerializer(serializers.ModelSerializer):
                 "usuario_administrador" : persona_FK.usuarioAdministrador,
                 "creacion_user" : persona_FK.creacionUser,
                 "password" : persona_FK.password,
-
+            },
+            "evento_FK" : {
+                "id" : evento_FK.id, 
+                "nombre_evento" : evento_FK.nombreEvento,
+                "fecha" : evento_FK.fecha,
+                "hora" : evento_FK.hora,
+                "duracion" : evento_FK.duracion,
+                "precio" : evento_FK.precio,
+                "descripcionSimple" : evento_FK.descripcionSimple,
+                "descripcionCompleta" : evento_FK.descripcionCompleta,
+                "imagen" : evento_FK.imagen,
+                "thumbnail" : evento_FK.thumbnail,
+                "cupo_maximo" : evento_FK.cupo_maximo,
+                "is_active" : evento_FK.is_active,
             }, 
             "numeroEntradas" : inscripcion.numeroEntradas,
             "pagoTotal" : inscripcion.pagoTotal,
