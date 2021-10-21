@@ -1,3 +1,10 @@
+
+# pip install -r requirements.txt
+# python -m pip install --upgrade pip
+# pip show djangorestframework
+# pip install djangorestframework
+# pip install Pillow
+
 django==3.2.7
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.8.0
@@ -11,3 +18,5 @@ asgiref==3.4.1
 pytz==2021.1
 sqlparse==0.4.2
 whitenoise==5.3.0
+
+Pillow

@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\MinTic2022\Ciclo III\Proyecto Zarcos\zarcos_be\env"
+VIRTUAL_ENV="C:\MinTic2022\Ciclo III\Proyecto Zarcos\Proyecto Farmacia Zarcos - Produccion\zarcos_be\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

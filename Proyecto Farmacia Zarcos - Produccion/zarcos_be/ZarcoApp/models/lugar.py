@@ -9,9 +9,9 @@ class Lugar(models.Model):
     complemento  = models.CharField('Complemento', max_length = 256)
     
     class Meta:
-        verbose_name = 'Lugar'
+        verbose_name        = 'Lugar'
         verbose_name_plural = 'Lugares'
-        ordering = ['nombre_lugar'] # ordena alfabeticamente
+        ordering            = ['nombre_lugar'] # ordena alfabeticamente
 
     REQUIRED_FIELDS = {
         'Ciudad',

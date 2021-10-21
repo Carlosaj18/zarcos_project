@@ -22,24 +22,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jq4cu&=i55ahb1b8l2fcslt!lp00eqrit8*z9gr&^n+3s+8l(_'
+SECRET_KEY = 'django-insecure-!40@o*%1s7-70#79gzk&vslphc&-q*-nd2%zfcs@*_h8f8x#x='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zarcos-web-be.herokuapp.com', 'localhost', '127.0.0.1']
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth', #Core authentication framework and its default models.
-    'django.contrib.contenttypes', #Django content type system (allows permissions to be associated with models).
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', # conector REST
     'ZarcoApp',
+    'corsheaders',
 ]
 
 """ La segunda configuración a realizar es indicarle a Simple JWT los atributos que se desea que tengan los tokens 
@@ -59,12 +61,13 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware', #Manages sessions across requests
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware', #Associates users with requests using sessions.
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 """La primera configuración que se debe realizar es indicarle al sistema de autenticación provisto por Django
@@ -75,11 +78,18 @@ será un diccionario que indica las clases que tienen acceso al sistema de auten
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny', # puede acceder a cualquier clase
-    ),
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+ ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication', # se necesita autenticar con JWT
     )
 }
+
+# Permissions:
+# AllowAny
+# IsAuthenticated
+# IsAdminUser
+# IsAuthenticatedOrReadOnly
 
 AUTH_USER_MODEL = 'ZarcoApp.User'
 
@@ -103,10 +113,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ZarcoProject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+"""
+# LOCAL DATABASE -> DEVELOP
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'zarcos-web-db', # Localhost
+    'USER': 'postgres',
+    'PASSWORD': 'Andesynene13',
+    'HOST': 'localhost',
+    'PORT': '5432',
+    }
+}"""
 
 DATABASES = {
     'default': {
@@ -118,7 +139,6 @@ DATABASES = {
     'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -138,13 +158,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Bogota'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -156,16 +175,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/' # Para almacenar elementos staticos
+STATIC_MODE = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 import django_heroku
 django_heroku.settings(locals())

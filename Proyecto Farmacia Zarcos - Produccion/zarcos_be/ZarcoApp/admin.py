@@ -5,14 +5,12 @@ pueden registrar en la aplicación.
 """
 
 from django.contrib import admin
-
 from .models.categoria import Categoria
 from .models.evento import Evento
 from .models.inscripcion import Inscripcion
 from .models.lugar import Lugar
 from .models.persona import User
 from .models.tipoEve import TipoEve
-
 
 # Register your models here.
 

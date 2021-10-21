@@ -48,11 +48,10 @@ Para lograr la persistencia es necesario utilizar el componente de la capa de da
     4. Se crean los atributos y metodos a partir del diseño de la base de datos
     5. Se exportan y registran los modelos en el archivo __init__.py de la carpeta <authApp>/models
     6. Se deben registrar en <authApp>/admin.py 
-        i. from django.contrib import admin
-        ii. from .models.categoria import Categoria
-        iii. admin.site.register(User)
-    7. Se indica cual sera el modelo para realizar la autenticacion en -> <authProject>/settings.py
-        i. AUTH_USER_MODEL = 'ZarcoApp.User'
+        i. Se crean los modelos con base en el Modelo Entidad Relacion
+        ii Se deben exportar los modelos en __init__.py de la carpeta modelos
+        iii. Se debe registrar los modelos en la aplicacion -> admin.site.register(User)
+        iv. Se indica cual sera el modelo para realizar la autenticacion en -> <authProject>/settings.py -> AUTH_USER_MODEL = 'ZarcoApp.User'
 
 VI. MIGRACIONES 
 
@@ -67,13 +66,21 @@ VII. SERIALIZADORES
     3. Una de las herramientas más útiles es la creación de un Serializer a partir de un Modelo, esto ahorra gran parte del trabajo ya que con solo indicarle unos pocos parámetros Django REST se encarga del trabajo difícil
     4. Dado que Django REST permite crear Serializers a partir de modelos, en muchas ocasiones se puede presentar que dichos modelos tengan relaciones entre sí
     5. https://www.youtube.com/watch?v=B38aDwUpcFc
+        i. Se debe crear la representacion de ese modelo.
+        ii. Cuando hay relaciones se debe sobrescribir el metodo create y to_representacion
 
 
 XIII. VIEWS 
 
     1. https://www.youtube.com/watch?v=B38aDwUpcFc 
+    2. Contienen los metodos CRUD para tratar los datos.
+    3. Una vez se han implementado ambas vistas, estas deben agregarse al módulo para que puedan ser 
+    importadas más adelante. Para esto, se deben agregar las siguientes líneas de código en el archivo, 
+    views/__init__.py
 
 IX. URL
+    1. Como se mencionó anteriormente, para exponer las funcionalidades implementadas en las vistas a los usuarios 
+    es necesario asignar una URL a cada una de ellas. 
 
 X. SUPERUSER 
 
@@ -81,6 +88,8 @@ X. SUPERUSER
     2. select * from auth_user para mirar los superUsers
 
 XI. PERMISOS 
+
+    1. https://www.youtube.com/watch?v=5AOn0BmSXyE
 
 XII. Despliegue en Heroku entorno
 
@@ -95,7 +104,20 @@ XII. Despliegue en Heroku entorno
     8. heroku config:set DISABLE_COLLECTSTATIC=1
     9. git push heroku master
     10. heroku config:set DJANGO_ALLOWED_HOSTS=https://zarcos-web-be.herokuapp.com/
+    11. heroku run python manage.py makemigrations
+    12. heroku run python manage.py migrate
 
 XIII. FRONTEND
 
     1. Se necesita installar Vue Js
+    2. Se debe installar los CORS en el componente logico
+        i.  pip install django-cors-headers
+    3. Ahora, se debe realizar la configuración del servidor del componente lógico para aceptar peticiones de los 
+        dominios que se requieren en INSTALLED_APPS
+        i. 'corsheaders'
+    4. Luego, en el mismo archivo se debe añadir corsheaders.middleware.CorsMiddleware a la lista de 
+        middlewares del servidor.
+    5. Lo último que se debe hacer es configurar los orígenes desde los cuales el servidor aceptará peticiones. Esto 
+        se puede realizar de dos formas, la primera es declarando la variable CORS_ALLOWED_ORIGINS que 
+        contendrá una lista de cadenas con los nombres de los orígenes que aceptaráb.
+        i. 
