@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div>
       Detail Tipo Eventos
       <div class="row">
         <table class="table table-striped">
@@ -21,7 +21,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <div class="d-flex justify-content-center">
         <div class="col-2">
           <button
             class="btn btn-success"
@@ -45,7 +45,7 @@
             class="btn btn-primary"
             v-on:click="tipoEventoPost()"
           >
-            Crear Categoria
+            Crear Tipo Evento
           </button>
         </div>
       </div>

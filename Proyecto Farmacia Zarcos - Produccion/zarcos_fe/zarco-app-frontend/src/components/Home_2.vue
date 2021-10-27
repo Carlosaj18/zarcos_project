@@ -1,7 +1,7 @@
 <template>
   <div class="greetings container">
     <div class="row">
-      <div class="col">
+      <div class="col d-flex justify-content-center">
         <h1>
           ¡Bienvenido <span> {{ username }} </span>!
         </h1>
@@ -164,11 +164,6 @@ export default {
 
 <style>
 .greetings {
-  margin: 0;
-  padding: 0%;
-  height: 100%;
-  width: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;

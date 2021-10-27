@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div>
       Detail Persona
       <div class="row">
         <table class="table table-striped">
@@ -40,7 +40,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <div class="d-flex justify-content-center">
         <!-- Botones de Accion-->
         <div class="col-2">
           <button
@@ -65,7 +65,7 @@
             class="btn btn-primary"
             v-on:click="personaPost()"
           >
-            Crear User
+            Crear Persona
           </button>
         </div>
       </div>

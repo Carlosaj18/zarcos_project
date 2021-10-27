@@ -21,7 +21,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <div class="d-flex justify-content-center">
         <!-- Botones de Accion-->
         <div class="col-2">
           <button

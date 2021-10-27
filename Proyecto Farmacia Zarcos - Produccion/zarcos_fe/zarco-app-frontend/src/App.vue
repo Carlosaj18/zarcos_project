@@ -18,7 +18,7 @@
     </div>
 
     <!-- Que esta haciendo los componentes del main? -->
-    <div class="main-component">
+    <div class="main-component" style="overflow-y:auto;">
       <!-- Me permite enrutar las vistas de login y signup, es un visualizador 
           y en ese espacio me puede colocar el resultado de esa redireccion del router y carga el 
           componente. Lo anterior pasa a partir de la funcion de JS que se complete

@@ -86,10 +86,6 @@ export default {
 
 <style>
 .greetings {
-  margin: 0;
-  padding: 0%;
-  height: 20%;
-  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;

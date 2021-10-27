@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div>
       Detail Inscripcion
       <div class="row">
         <table class="table table-striped">

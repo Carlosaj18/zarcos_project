@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div>
       Detail
       <div class="row">
         <table class="table table-striped">
@@ -24,7 +24,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <div class="d-flex justify-content-center">
         <div class="col-2">
           <button
             class="btn btn-success"
