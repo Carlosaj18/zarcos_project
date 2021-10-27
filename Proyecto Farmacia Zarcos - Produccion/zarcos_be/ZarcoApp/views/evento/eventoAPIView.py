@@ -126,7 +126,7 @@ class EventoDeleteAPIView(generics.RetrieveDestroyAPIView):
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
 
-    def get(self, request, *args, **kwargs):
+    def destroy(self, request, *args, **kwargs):
         print("Request:", request)
         print("Args", args)
         print("Kwargs", kwargs)

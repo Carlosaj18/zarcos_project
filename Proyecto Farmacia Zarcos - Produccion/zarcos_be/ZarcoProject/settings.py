@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-!40@o*%1s7-70#79gzk&vslphc&-q*-nd2%zfcs@*_h8f8x#x=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zarcos-web-be.herokuapp.com', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['zarcos-web-be.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = []
 
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', # conector REST
+    'rest_framework',  # conector REST
     'ZarcoApp',
     'corsheaders',
 ]
@@ -62,12 +63,14 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+
+
 ]
 
 """La primera configuración que se debe realizar es indicarle al sistema de autenticación provisto por Django
@@ -77,11 +80,12 @@ será un diccionario que indica las clases que tienen acceso al sistema de auten
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny', # puede acceder a cualquier clase
+        'rest_framework.permissions.AllowAny',  # puede acceder a cualquier clase
         # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
- ),
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication', # se necesita autenticar con JWT
+        # se necesita autenticar con JWT
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
@@ -131,12 +135,12 @@ DATABASES = {
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd4ucvle2ea6bbi',
-    'USER': 'jkghiemtnbjsvp',
-    'PASSWORD': 'f927de730c623781851b2e65099d9c6042dcda56a6ce49d19fe3974d12834036',
-    'HOST': 'ec2-3-226-165-74.compute-1.amazonaws.com',
-    'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd4ucvle2ea6bbi',
+        'USER': 'jkghiemtnbjsvp',
+        'PASSWORD': 'f927de730c623781851b2e65099d9c6042dcda56a6ce49d19fe3974d12834036',
+        'HOST': 'ec2-3-226-165-74.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
