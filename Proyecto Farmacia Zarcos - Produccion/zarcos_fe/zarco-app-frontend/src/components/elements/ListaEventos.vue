@@ -48,9 +48,9 @@
           </tbody>
         </table>
       </div>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center" style="gap:2%;">
         <!-- Botones de Accion-->
-        <div class="col-2">
+        <div>
           <button
             class="btn btn-success"
             v-on:click="eventoUpdate(eventoSelected)"
@@ -58,7 +58,7 @@
             Editar Evento
           </button>
         </div>
-        <div class="col-2">
+        <div>
           <button
             type="button"
             class="btn btn-warning"
@@ -67,7 +67,7 @@
             Limpiar entradas
           </button>
         </div>
-        <div class="col-2">
+        <div>
           <button
             type="button"
             class="btn btn-primary"
